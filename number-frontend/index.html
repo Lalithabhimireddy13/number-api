@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html ng-app="numberApp">
+<head>
+    <title>Number API</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .input-frame, .output-frame {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 48%;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="number"], input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .results {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        pre {
+            margin: 0;
+            white-space: pre-wrap; /* Allows for line breaks and wrapping */
+            word-wrap: break-word; /* Allows long words to break */
+        }
+    </style>
+</head>
+<body ng-controller="MainController">
+    <div class="container">
+        <div class="input-frame">
+            <h1>Number API</h1>
+
+            <label>Start:</label>
+            <input type="number" ng-model="start">
+
+            <label>End:</label>
+            <input type="number" ng-model="end">
+
+            <button ng-click="fetchData('/p')">Prime Numbers</button>
+            <button ng-click="fetchData('/e')">Even Numbers</button>
+            <button ng-click="fetchData('/o')">Odd Numbers</button>
+            <button ng-click="fetchData('/f')">Fibonacci Numbers</button>
+            <button ng-click="fetchData('/pa')">Palindromes</button><br>
+
+            <label>Numbers (comma-separated):</label>
+            <input type="text" ng-model="numbers">
+
+            <button ng-click="fetchData('/s')">Sum</button>
+            <button ng-click="fetchData('/a')">Average</button>
+            <button ng-click="fetchData('/sq')">Squares</button>
+        </div>
+
+        <div class="output-frame">
+            <h2>Results:</h2>
+            <div class="results">
+                <pre>{{ result | json }}</pre>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
